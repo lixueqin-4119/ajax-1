@@ -1,3 +1,22 @@
+let n=1;
+getPage.onclick=()=>{
+    const request=new XMLHttpRequest();
+    request.open("get",`/page${n+1}`);
+    request.onreadystatechange=()=>{
+        if(request.readyState===4 &&request.readyState===200){
+            console.log(request.response)  
+            const array=JSON.parse(request.response)
+            array.forEach(item=>{
+                const li=document.createElement('li')
+                li.textContent=item.id
+                xxx.appendChild(li);
+            });
+            n+=1;
+        };
+       };
+   request.send()
+}
+
 getJSON.onclick=()=>{
     const request=new XMLHttpRequest();
     request.open("get","/5.json");
